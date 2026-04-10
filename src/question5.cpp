@@ -45,8 +45,6 @@ class Question5 : public Question {
         cv::Mat resulting_bmp_image;
         spatial_domain_image.convertTo(resulting_bmp_image, CV_8UC1);
 
-        std::cout <<  static_cast<int>(resulting_bmp_image.at<uchar>(0, 0)) << '\n';
-
         image = resulting_bmp_image;
     }
 
@@ -60,7 +58,7 @@ class Question5 : public Question {
 
 int main() {
 
-    Question5 q("images/linux.bmp");
+    Question5 q("images/full body PET - original-HSV.png");
 
     float k1 = 0.3f, k2 = 0.5f;
 
