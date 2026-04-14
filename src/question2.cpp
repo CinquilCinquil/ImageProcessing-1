@@ -2,20 +2,15 @@
 #include <iostream>
 #include <string>
 #include <algorithm>
+#include "question_model.cpp"
 using vector2 = std::vector<std::vector<float>>;
 using Pixel = uchar;
 
-class Question2 {
-    private:
-    
-    cv::Mat image;
-    std::string image_path;
+class Question2 : public Question {
 
     public:
 
-    Question2(std::string image_path) : image_path(image_path) {
-        refresh();
-    }
+    using Question::Question;
 
     void convolution_in_space_domain(vector2 &kernel, int d) {
 
@@ -55,14 +50,6 @@ class Question2 {
             image.at<Pixel>(h, w) = static_cast<Pixel>(normalized_value);
 
         }}
-    }
-
-    void save(std::string filename) {
-        cv::imwrite("images/results/" + filename + ".bmp", image);
-    }
-    
-    void refresh() {
-        image = cv::imread(image_path, cv::IMREAD_GRAYSCALE);
     }
 };
 
