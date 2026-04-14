@@ -14,7 +14,9 @@ class Question {
     }
 
     void save(std::string filename) {
-        cv::imwrite("images/results/" + filename + ".bmp", image);
+        auto path = "images/results/" + filename + ".bmp";
+        cv::imwrite(path, image);
+        std::cout << "Results saved at " << path << "\n";
     }
     
     void refresh() {
