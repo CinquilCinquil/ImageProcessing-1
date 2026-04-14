@@ -56,11 +56,18 @@ class Question5 : public Question {
     }
 };
 
-int main() {
+int main(int argc, char* argv[]) {
 
-    Question5 q("images/full body PET - original-HSV.png");
+    if (argc != 4) {
+        std::cout << argc << '\n';
+        std::cout << "You need to pass excatly one input image path, k1 and k2 as an argument!";
+        return -1;
+    }
 
-    float k1 = 0.3f, k2 = 0.5f;
+    std::string filepath = argv[1];
+    Question5 q(filepath);
+
+    float k1 = std::stof(argv[2]), k2 = std::stof(argv[3]);
 
     q.high_frequency_emphasis(k1, k2);
     q.save("question5_high_freq_emphasis");

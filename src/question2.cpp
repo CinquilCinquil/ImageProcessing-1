@@ -66,9 +66,16 @@ class Question2 {
     }
 };
 
-int main() {
+int main(int argc, char* argv[]) {
 
-    auto q = Question2("images/linux.bmp");
+    if (argc != 2) {
+        std::cout << argc << '\n';
+        std::cout << "You need to pass excatly one input image path as an argument!";
+        return -1;
+    }
+
+    std::string filepath = argv[1];
+    auto q = Question2(filepath);
 
     // Low-Pass
     vector2 low_pass_kernel = {
